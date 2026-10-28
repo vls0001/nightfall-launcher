@@ -1,2 +1,5 @@
 build/
 *.keystore
+tools/screenshots/deps/
+tools/screenshots/out/
+tools/screenshots/target/

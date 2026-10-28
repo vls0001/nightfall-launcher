@@ -119,6 +119,54 @@ public class AppStore {
         prefs.edit().putString(KEY_DOCK, TextUtils.join(",", pkgs)).apply();
     }
 
+    // ---------- Recently opened ----------
+
+    private SharedPreferences settings() {
+        return ctx.getSharedPreferences("settings", Context.MODE_PRIVATE);
+    }
+
+    public List<String> recents() {
+        List<String> out = new ArrayList<String>();
+        String saved = settings().getString("recent", "");
+        if (saved.length() > 0) Collections.addAll(out, saved.split(","));
+        return out;
+    }
+
+    public void noteLaunch(String pkg) {
+        List<String> r = recents();
+        r.remove(pkg);
+        r.add(0, pkg);
+        while (r.size() > 8) r.remove(r.size() - 1);
+        settings().edit().putString("recent", TextUtils.join(",", r)).apply();
+    }
+
+    // ---------- Preferences ----------
+
+    /** "system", "24" or "12". */
+    public String clockMode() {
+        return settings().getString("clock", "system");
+    }
+
+    public void setClockMode(String mode) {
+        settings().edit().putString("clock", mode).apply();
+    }
+
+    public boolean weatherOn() {
+        return settings().getBoolean("weather", true);
+    }
+
+    public void setWeatherOn(boolean on) {
+        settings().edit().putBoolean("weather", on).apply();
+    }
+
+    public boolean recentsOn() {
+        return settings().getBoolean("recents", true);
+    }
+
+    public void setRecentsOn(boolean on) {
+        settings().edit().putBoolean("recents", on).apply();
+    }
+
     public static App find(List<App> apps, String pkg) {
         for (App a : apps) if (a.pkg.equals(pkg)) return a;
         return null;

@@ -36,18 +36,18 @@ public class Glyphs extends Drawable {
                 }
             }
         } else {
-            float outer = s * 0.36f, tooth = s * 0.13f;
+            float outer = s * 0.34f, tooth = s * 0.14f;
             for (int i = 0; i < 8; i++) {
                 c.save();
                 c.rotate(i * 45f, cx, cy);
-                c.drawRoundRect(new RectF(cx - tooth / 2f, cy - outer - tooth * 0.55f,
-                        cx + tooth / 2f, cy), tooth * 0.25f, tooth * 0.25f, paint);
+                c.drawRoundRect(new RectF(cx - tooth / 2f, cy - outer - tooth * 0.6f,
+                        cx + tooth / 2f, cy - outer * 0.6f), tooth * 0.25f, tooth * 0.25f, paint);
                 c.restore();
             }
-            c.drawCircle(cx, cy, outer, paint);
-            Paint hole = new Paint(Paint.ANTI_ALIAS_FLAG);
-            hole.setColor(0xFF1E3C3A);
-            c.drawCircle(cx, cy, outer * 0.42f, hole);
+            Paint ring = new Paint(paint);
+            ring.setStyle(Paint.Style.STROKE);
+            ring.setStrokeWidth(outer * 0.55f);
+            c.drawCircle(cx, cy, outer * 0.72f, ring);
         }
     }
 

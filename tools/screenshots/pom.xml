@@ -1,0 +1,20 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>dev.nightfall</groupId><artifactId>screenshots</artifactId><version>1</version>
+  <properties><maven.compiler.release>17</maven.compiler.release><project.build.sourceEncoding>UTF-8</project.build.sourceEncoding></properties>
+  <dependencies>
+    <dependency><groupId>org.robolectric</groupId><artifactId>robolectric</artifactId><version>4.17</version><scope>test</scope>
+      <exclusions><exclusion><groupId>androidx.test</groupId><artifactId>*</artifactId></exclusion><exclusion><groupId>androidx.test.espresso</groupId><artifactId>*</artifactId></exclusion></exclusions></dependency>
+    <dependency><groupId>org.robolectric</groupId><artifactId>android-all</artifactId><version>14-robolectric-10818077</version><scope>provided</scope></dependency>
+    <dependency><groupId>junit</groupId><artifactId>junit</artifactId><version>4.13.2</version><scope>test</scope></dependency>
+  </dependencies>
+  <build>
+    <testResources><testResource><directory>src/test/resources</directory><filtering>true</filtering></testResource></testResources>
+    <plugins>
+    <plugin><groupId>org.codehaus.mojo</groupId><artifactId>build-helper-maven-plugin</artifactId><version>3.6.0</version>
+      <executions><execution><id>s</id><phase>generate-test-sources</phase><goals><goal>add-test-source</goal></goals>
+      <configuration><sources><source>${project.basedir}/../../src</source><source>${project.basedir}/../../build/gen</source></sources></configuration></execution></executions></plugin>
+    <plugin><groupId>org.apache.maven.plugins</groupId><artifactId>maven-surefire-plugin</artifactId><version>3.5.2</version>
+      <configuration><argLine>-Xmx3g -Drobolectric.offline=true -Drobolectric.dependency.dir=${project.basedir}/deps -Dshots=${project.basedir}/out</argLine><redirectTestOutputToFile>false</redirectTestOutputToFile><trimStackTrace>false</trimStackTrace></configuration></plugin>
+  </plugins></build>
+</project>
