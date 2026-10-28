@@ -33,6 +33,8 @@ Settings → **Check for updates** downloads the newest version from this repo a
 
 - **Hold OK** (or press ☰) on a tile to move it, remove it, or see app info.
 - **All apps** tile: every installed app. Hold OK (or ☰) to pin or unpin one.
+- **App tiles**: an app's own wide TV banner when it has one; otherwise the brand's logo and colours
+  for 58 popular apps (see `tools/logos`), or a poster made from the app's icon.
 - **Recent row** under the apps: the last apps you opened. Hold OK on one to pin it.
 - **Settings** tile: Fire TV settings, home screen takeover, removing Amazon's tracking apps (undoable), clock
   format, weather on/off, recent row on/off, updates, and resetting the row.

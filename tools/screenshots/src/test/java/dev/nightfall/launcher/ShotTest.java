@@ -38,16 +38,23 @@ public class ShotTest {
 
     // name, package, colour, has wide banner
     static final Object[][] FAKE = {
-            {"YouTube", "com.amazon.firetv.youtube", 0xFFFF0033, true},
+            {"YouTube", "com.amazon.firetv.youtube", 0xFFFF0033, false},
             {"Spotify", "com.spotify.tv.android", 0xFF1DB954, false},
             {"Stremio", "com.stremio.one", 0xFF6C4DF5, false},
-            {"Netflix", "com.netflix.ninja", 0xFFE50914, true},
+            {"Netflix", "com.netflix.ninja", 0xFFE50914, false},
             {"Prime Video", "com.amazon.avod", 0xFF1A98FF, false},
             {"Disney+", "com.disney.disneyplus", 0xFF113CCF, false},
-            {"Plex", "com.plexapp.android", 0xFFE5A00D, false},
             {"Kodi", "org.xbmc.kodi", 0xFF17B2E7, false},
             {"Twitch", "tv.twitch.android.app", 0xFF9146FF, false},
             {"Downloader", "com.esaba.downloader", 0xFFF07B13, false},
+            {"Max", "com.wbd.stream", 0xFF2049F0, false},
+            {"YouTube Music", "com.google.android.youtube.tvmusic", 0xFFFF0033, false},
+            {"TV Player Pro", "com.example.tvplayer", 0xFF2EB872, false},
+            {"Crunchyroll", "com.crunchyroll.crunchyroid", 0xFFF47521, false},
+            {"BBC iPlayer", "bbc.iplayer.android", 0xFFFF4C98, false},
+            {"Plex", "com.plexapp.android", 0xFFE5A00D, false},
+            {"Apple TV", "com.apple.atve.amazon.appletv", 0xFF333333, false},
+            {"Tubi", "com.tubitv", 0xFF7408FF, false},
     };
 
     @Test

@@ -7,7 +7,9 @@ import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
+import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
+import android.util.DisplayMetrics;
 import android.text.TextUtils;
 
 import java.util.ArrayList;
@@ -86,8 +88,21 @@ public class AppStore {
             } catch (Exception ignored) {
                 app.banner = null;
             }
-            app.icon = ri.loadIcon(pm);
+            app.icon = sharpIcon(pm, ri);
+            if (app.icon == null) app.icon = ri.loadIcon(pm);
             out.put(app.pkg, app);
+        }
+    }
+
+    /** The app's icon at the highest resolution it ships, so it stays crisp when drawn large. */
+    private static Drawable sharpIcon(PackageManager pm, ResolveInfo ri) {
+        try {
+            int res = ri.getIconResource();
+            if (res == 0) return null;
+            Resources r = pm.getResourcesForApplication(ri.activityInfo.applicationInfo);
+            return r.getDrawableForDensity(res, DisplayMetrics.DENSITY_XXXHIGH, null);
+        } catch (Exception e) {
+            return null;
         }
     }
 

@@ -7,8 +7,8 @@ cd "$(dirname "$0")"
 SDK=/usr/lib/android-sdk
 ANDROID_JAR=$SDK/platforms/android-23/android.jar
 BT=$SDK/build-tools/debian
-VERSION_CODE=${VERSION_CODE:-2}
-VERSION_NAME=${VERSION_NAME:-2.0}
+VERSION_CODE=${VERSION_CODE:-3}
+VERSION_NAME=${VERSION_NAME:-2.1}
 KEYSTORE=${KEYSTORE:-$HOME/.nightfall/release.keystore}
 
 rm -rf build && mkdir -p build/gen build/classes
